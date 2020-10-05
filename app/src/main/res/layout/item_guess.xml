@@ -26,7 +26,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:layout_margin="0dp"
-    app:layout_constraintStart_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/guess_number"
     app:layout_constraintEnd_toStartOf="@id/result_container"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"/>
