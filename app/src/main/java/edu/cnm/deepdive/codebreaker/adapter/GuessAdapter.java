@@ -16,6 +16,7 @@ import edu.cnm.deepdive.codebreaker.model.Code.Guess;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.w3c.dom.Text;
 
 public class GuessAdapter extends ArrayAdapter<Guess> {
 
@@ -42,8 +43,10 @@ public class GuessAdapter extends ArrayAdapter<Guess> {
         ? convertView
         : inflater.inflate(R.layout.item_guess, parent, false);
     Guess guess = getItem(position);
+    TextView guessNumber = layout.findViewById(R.id.guess_number);
     TextView correct = layout.findViewById(R.id.correct);
     TextView close = layout.findViewById(R.id.close);
+    guessNumber.setText(String.valueOf(position + 1));
     correct.setText(String.valueOf(guess.getCorrect()));
     close.setText(Integer.toString(guess.getClose()));
     LinearLayout guessContainer = layout.findViewById(R.id.guess_container);
