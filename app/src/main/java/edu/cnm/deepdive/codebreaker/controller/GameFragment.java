@@ -1,10 +1,7 @@
 package edu.cnm.deepdive.codebreaker.controller;
 
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,9 +24,7 @@ import edu.cnm.deepdive.codebreaker.viewmodel.MainViewModel;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameFragment  extends Fragment  {
-
-  private static final String INVALID_CHAR_PATTERN = String.format("[^%s]", MainViewModel.POOL);
+public class GameFragment extends Fragment {
 
   private Map<Character, Integer> colorValueMap;
   private Map<Character, String> colorLabelMap;
@@ -117,6 +112,7 @@ public class GameFragment  extends Fragment  {
     //noinspection ConstantConditions
     adapter = new GuessAdapter(activity, colorValueMap, colorLabelMap);
     viewModel = new ViewModelProvider(activity).get(MainViewModel.class);
+    getLifecycle().addObserver(viewModel);
     LifecycleOwner lifecycleOwner = getViewLifecycleOwner();
     viewModel.getGame().observe(lifecycleOwner, this::updateGameDisplay);
     viewModel.getSolved().observe(lifecycleOwner, (solved) ->
