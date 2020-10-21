@@ -27,7 +27,7 @@ import edu.cnm.deepdive.codebreaker.viewmodel.MainViewModel;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameFragment  extends Fragment implements InputFilter {
+public class GameFragment  extends Fragment  {
 
   private static final String INVALID_CHAR_PATTERN = String.format("[^%s]", MainViewModel.POOL);
 
@@ -82,21 +82,6 @@ public class GameFragment  extends Fragment implements InputFilter {
         handled = super.onOptionsItemSelected(item);
     }
     return handled;
-  }
-
-  @Override
-  public CharSequence filter(CharSequence source, int sourceStart, int sourceEnd,
-      Spanned dest, int destStart, int destEnd) {
-    String modifiedSource = source.toString().toUpperCase().replaceAll(INVALID_CHAR_PATTERN, "");
-    StringBuilder builder = new StringBuilder(dest);
-    builder.replace(destStart, destEnd, modifiedSource);
-    if (builder.length() > codeLength) {
-      modifiedSource =
-          modifiedSource.substring(0, modifiedSource.length() - (builder.length() - codeLength));
-    }
-    int newLength = dest.length() - (destEnd - destStart) + modifiedSource.length();
-    binding.submit.setEnabled(newLength == codeLength);
-    return modifiedSource;
   }
 
   private void setupMaps() {

@@ -24,5 +24,4 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     actionBar.setDisplayHomeAsUpEnabled(true);
     actionBar.setDisplayShowHomeEnabled(true);
   }
-
 }
